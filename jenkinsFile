@@ -22,9 +22,7 @@ pipeline {
         stage('Cleaning the projects'){
             steps{
                 
-                echo 'Cleaning the project';
-		sh""" mvn -version""",
-		sh """mvn clean""";
+                echo 'Cleaning the project'
 		
 		
             }
