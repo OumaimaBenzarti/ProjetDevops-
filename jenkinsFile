@@ -47,6 +47,7 @@ pipeline {
             steps{
                 
                 echo 'Analyse le code source avec SONARQUBE'
+		sh """mvn sonar:sonar"""
             }
             
         }
