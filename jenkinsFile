@@ -23,7 +23,10 @@ pipeline {
             steps{
                 
                   
-  	echo 'Analyse le code source avec SONARQUBE'
+  	echo 'Testing maven'
+	sh""" mvn -version"""
+	sh"""mvn clean"""
+	
 		
 		
             }
