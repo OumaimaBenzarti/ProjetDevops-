@@ -22,7 +22,8 @@ pipeline {
         stage('Cleaning the projects'){
             steps{
                 
-                bat """mvn -version"""
+                   bat """mvn clean"""
+
 		
 		
             }
