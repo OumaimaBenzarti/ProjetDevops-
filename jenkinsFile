@@ -1,0 +1,74 @@
+pipeline {
+    agent any
+    
+    stages{
+        stage('Tools install'){
+            steps{
+                
+                echo 'Tools'
+            }
+            
+        }
+        
+        stage('Geeting project from git'){
+            steps{
+                  echo 'Récupérer le projet à partir de git';
+                    git branch: 'nourchene',
+					url : 'https://github.com/OumaimaBenzarti/ProjetDevops-.git';
+            }
+            
+        }
+        
+        stage('Cleaning the projects'){
+            steps{
+                
+                echo 'Cleaning the project'
+            }
+            
+        }
+        
+        stage('Unit Tests'){
+            steps{
+                
+                echo 'Test Unitaire'
+            }
+            
+        }
+        
+        stage('Code Quality Check via SONARQUBE '){
+            steps{
+                
+                echo 'Analyse le code source avec SONARQUBE'
+            }
+            
+        }
+        
+         stage('Publish To Nexus '){
+            steps{
+                
+                echo 'publier à nexus'
+            }
+            
+        }
+    
+        
+         stage('Building our image '){
+            steps{
+                
+                echo 'Building our image'
+            }
+            
+        }
+        
+          stage('Deploy  our image '){
+            steps{
+                
+                echo 'Déploiement de notre image'
+            }
+            
+        }
+        
+        
+    }
+    
+}
