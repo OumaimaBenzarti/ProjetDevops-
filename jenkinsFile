@@ -35,7 +35,7 @@ pipeline {
             
         }
         
-        stage('Unit Tests'){
+        stage('Unit Tests (pas encore )'){
             steps{
                 
                 echo 'Test Unitaire'
@@ -43,7 +43,7 @@ pipeline {
             
         }
         
-        stage('Code Quality Check via SONARQUBE '){
+        stage('Code Quality Check via SONARQUBE  (pas encore ) '){
             steps{
                 
                 echo 'Analyse le code source avec SONARQUBE'
@@ -52,7 +52,7 @@ pipeline {
             
         }
         
-         stage('Publish To Nexus '){
+         stage('Publish To Nexus (pas encore )'){
             steps{
                 
                 echo 'publier à nexus'
@@ -61,7 +61,7 @@ pipeline {
         }
     
         
-         stage('Building our image '){
+         stage('Building our image (pas encore )'){
             steps{
                 
                 echo 'Building our image'
@@ -69,7 +69,7 @@ pipeline {
             
         }
         
-          stage('Deploy  our image '){
+          stage('Deploy  our image (pas encore ) '){
             steps{
                 
                 echo 'Déploiement de notre image'
