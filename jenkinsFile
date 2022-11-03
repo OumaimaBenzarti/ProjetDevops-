@@ -22,7 +22,7 @@ pipeline {
         stage('Cleaning the projects'){
             steps{
                 
-                   ssh """mvn clean"""
+                  
 
 		
 		
