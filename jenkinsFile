@@ -24,9 +24,10 @@ pipeline {
                 
                   
   	echo 'Testing maven'
-	sh""" mvn -version"""
+	sh " mvn -version"
+	sh 'mvn clean compile'
 	sh "mvn help:effective-settings"
-	sh"""mvn clean"""
+	sh "mvn clean"
 	
 	
 		
