@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.entities.CategorieProduitRepository;
-import tn.esprit.rh.achat.entities.OperateurRepository;
+import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
+import tn.esprit.rh.achat.repositories.OperateurRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
