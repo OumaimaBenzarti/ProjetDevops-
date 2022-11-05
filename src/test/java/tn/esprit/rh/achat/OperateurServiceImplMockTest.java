@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import tn.esprit.rh.achat.CategorieProduit;
-import tn.esprit.rh.achat.Operateur;
-import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.CategorieProduitRepository;
-import tn.esprit.rh.achat.OperateurRepository;
+import tn.esprit.rh.achat.entities.CategorieProduit;
+import tn.esprit.rh.achat.entities.Operateur;
+import tn.esprit.rh.achat.entities.entities.Produit;
+import tn.esprit.rh.achat.entities.CategorieProduitRepository;
+import tn.esprit.rh.achat.entities.OperateurRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
