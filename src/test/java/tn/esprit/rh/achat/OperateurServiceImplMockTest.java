@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.rh.achat.CategorieProduit;
 import tn.esprit.rh.achat.Operateur;
-import com.esprit.examen.entities.Produit;
+import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.CategorieProduitRepository;
 import tn.esprit.rh.achat.OperateurRepository;
 
