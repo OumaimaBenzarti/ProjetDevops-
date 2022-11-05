@@ -34,8 +34,8 @@ public class OperateurServiceImplTest {
 	public void testAddOperateur() throws ParseException {
 
 		Operateur o = new Operateur();
-		o.setNom("Nizar");
-		o.setPrenom("Ferchichi");
+		o.setNom("Myriam");
+		o.setPrenom("khachlouf");
 		o.setPassword("devops123");
 		Operateur operateur = operateurService.addOperateur(o);
 		System.out.print("client " + operateur);
@@ -51,21 +51,21 @@ public class OperateurServiceImplTest {
 	@Order(2)
 	public void testModifierOperateur() throws ParseException {
 		Operateur o = new Operateur();
-		o.setNom("Nizar");
-		o.setPrenom("Ferchichi");
+		o.setNom("Myriam");
+		o.setPrenom("khachlouf");
 		o.setPassword("devops123");
 		Operateur operateur = operateurService.addOperateur(o);
 		System.out.print("client " + operateur);
 
 		log.info("Operateur ajouter avec success");
 
-		o.setNom("Yassine");
-		o.setPrenom("Derbel");
+		o.setNom("mariem");
+		o.setPrenom("khachlouf");
 		Operateur x = operateurService.updateOperateur(o);
 		assertNotNull(operateur.getIdOperateur());
 		assertTrue(operateur.getNom().length() > 0);
 		assertTrue(operateur.getPrenom().length() > 0);
-		log.info("categorie modifier avec success");
+		log.info("Operateur ajouter avec success");
 	}
 
 	@Test
