@@ -83,7 +83,7 @@ public class OperateurServiceImplTest {
 	@Order(4)
 	public void testDeleteOperateur() throws ParseException {
 		Operateur o = new Operateur();
-		o.setNom("Nizar");
+		o.setNom("maryouma");
 		o.setPrenom("Ferchichi");
 		o.setPassword("devops123");
 		operateurService.addOperateur(o);
