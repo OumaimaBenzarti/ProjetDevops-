@@ -1,0 +1,36 @@
+pipeline {
+          agent any
+          stages{
+            stage('Checkout GIT'){
+                steps{
+                    echo 'Pulling...';
+                    git branch: 'abirr',
+                    url : 'https://github.com/OumaimaBenzarti/ProjetDevops-.git';
+                }
+
+            }
+            stage('MVN CLEAN'){
+            steps{
+                echo 'Pulling...';
+                sh 'mvn clean'
+                }
+            }
+             stage('MVN COMPILE'){
+                steps{
+                sh 'mvn compile'
+                }
+             }
+             stage('MVN PACKAGE'){
+                steps{
+                sh 'mvn package'
+                }
+             }
+             stage('MVN TEST'){
+                steps{
+                 sh 'mvn test'
+                 }
+             }
+
+
+              }
+          }
