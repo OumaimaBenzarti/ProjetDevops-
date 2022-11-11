@@ -10,7 +10,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=1
     restart: always
     volumes:
-      - mysql-containerFinal1:/var/lib/mysql:rw
+      - mysql-container:/var/lib/mysql:rw
     image: 'mysql:latest'
   dockerfile_spring:
     depends_on:
