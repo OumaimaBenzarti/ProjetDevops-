@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+  mysql-container:
+    container_name: mysql-container
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=1
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    restart: always
+    volumes:
+      - mysql-containerFinal1:/var/lib/mysql:rw
+    image: 'mysql:latest'
+  dockerfile_spring:
+    depends_on:
+      - mysql-container
+    container_name: dockerfile_spring
+    ports:
+      - '8089:8089'
+    image: abirnf/dockerfile:2.2.4
+volumes:
+  mysql-container: { }
