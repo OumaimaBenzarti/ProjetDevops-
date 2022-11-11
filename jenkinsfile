@@ -46,7 +46,7 @@ pipeline {
                                              sh 'docker build -t abirnf/dockerfile:2.2.4 .'
                                              }
                                           }
-/*
+
                                           stage('Push Docker Image') {
                                                steps {
                                                  withCredentials([string(credentialsId: 'DockerhubPWS', variable: 'DockerhubPWS')]) {
@@ -55,7 +55,7 @@ pipeline {
                                                  sh 'docker push abirnf/dockerfile:2.2.4'
                                                }
                                           }
-                                          
+                                          /*
                                           stage('DOCKER COMPOSE') {
                                                steps {
                                                   sh 'docker-compose up -d --build'
@@ -64,4 +64,4 @@ pipeline {
                                       }
 
               }
-          }
+
