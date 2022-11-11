@@ -55,11 +55,12 @@ pipeline {
                                                  sh 'docker push abirnf/dockerfile:2.2.4'
                                                }
                                           }
+                                          /*
                                           stage('DOCKER COMPOSE') {
                                                steps {
                                                   sh 'docker-compose up -d --build'
                                                }
-                                          }
+                                          }*/
                                       }
 
               }
