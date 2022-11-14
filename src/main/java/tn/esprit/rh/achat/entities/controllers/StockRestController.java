@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.controllers;
+package tn.esprit.rh.achat.entities.controllers;
 
 
 import io.swagger.annotations.Api;
