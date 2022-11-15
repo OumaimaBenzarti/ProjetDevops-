@@ -37,7 +37,9 @@ public class FournisseurServiceImplTest {
 
         Fournisseur c = new Fournisseur("AEDRE", "MOHSEN");
         Fournisseur fournisseur = fournisseurService.addFournisseur(c);
-        
+        System.out.print("Fournisseur "+fournisseur);
+        assertNotNull(fournisseur.getIdFournisseur());
+        fournisseurService.deleteFournisseur(fournisseur.getIdFournisseur());
 
     }
     @Test
@@ -47,8 +49,8 @@ public class FournisseurServiceImplTest {
        // Date dateModification = dateFormat.parse("30/09/2020");
         Fournisseur c = new Fournisseur("AEDRE", "MOHSEN");
         Fournisseur Fournisseur = fournisseurService.addFournisseur(c);
-
-
+        fournisseurService.deleteFournisseur(Fournisseur.getIdFournisseur());
+        assertNull(fournisseurService.retrieveFournisseur(Fournisseur.getIdFournisseur()));
     }
 
     @Test
@@ -59,8 +61,9 @@ public class FournisseurServiceImplTest {
         List<Fournisseur> Fournisseurs = fournisseurService.retrieveAllFournisseurs();
         int expected = Fournisseurs.size();
         Fournisseur c = new Fournisseur("AEDRE", "MOHSEN");
-
-
+        Fournisseur Fournisseur = fournisseurService.addFournisseur(c);
+        assertEquals(expected + 1, fournisseurService.retrieveAllFournisseurs().size());
+        fournisseurService.deleteFournisseur(Fournisseur.getIdFournisseur());
     }
 
 
