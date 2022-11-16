@@ -1,6 +1,15 @@
 pipeline {
+
+    environment {
+
+     springF="app_back"   
+     angularF="app_front"    
+   }
+
           agent any
+
           stages{
+
             stage('Get project from GIT'){
                 steps{
                     echo 'Pulling...';
@@ -9,31 +18,32 @@ pipeline {
                 }
             }
             stage('Cleaning..') {
+
                 steps {
-                sh 'mvn clean'
+                sh ' cd ${springF} && mvn clean'
             }
         }
             stage('Compiling..') {
                 steps {
-                sh 'mvn compile'
+                sh 'cd ${springF} && mvn compile'
             }
         }
             stage('Testing..') {
                 steps {
-                sh 'mvn test'
+                sh 'cd ${springF} && mvn test'
             }
         }
             stage('MVN SONARQUBE')
             {
                 steps{
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+                sh 'cd ${springF} && mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
                 }
             }
             stage("Nexus deploy"){
                 steps{
-                    sh 'mvn deploy'
-
+                    sh 'cd ${springF} && mvn deploy'
                     }
+
                     }
 
           }

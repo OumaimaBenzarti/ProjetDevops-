@@ -1,0 +1,82 @@
+# Docker Compose 
+version: '3.7'
+
+# Define services
+services:
+  # App backend service
+  app_back:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: achat_back # Use an image built from the specified dockerfile in the `app_back` directory.
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089" # Forward the exposed port 8089 on the container to port 8089 on the host machine
+    container_name: app_back_cont
+    restart: always
+    depends_on:
+      - db # This service depends on mysql. Start that first.
+    environment:
+      # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/achatdb_sar?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: sarra
+      SPRING_DATASOURCE_PASSWORD: sarra@12ere
+    networks:
+      # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+      - frontend
+
+  # Frontend Service 
+  app_front:
+    build:
+      context: achat_front # Use an image built from the specified dockerfile in the `app_front` directory.
+      dockerfile: Dockerfile
+    container_name: app_front_cont
+    ports:
+      - "8081:80" # Map the exposed port 80 on the container to port 8081 on the host machine
+    restart: always
+    depends_on:
+      - app_back
+    networks:
+      - frontend
+
+  # Database Service (Mysql)
+  db:
+    image: mysql:latest
+    container_name: app_bd_cont
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_data:/var/lib/mysql #Host volume-name ::: path inside of the mysql container.
+    restart: always
+    environment:
+      MYSQL_DATABASE: achatdb_sar
+      MYSQL_USER: sarra
+      MYSQL_PASSWORD: sarra@12ere
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - backend
+
+  # Database Service (Mysql)
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: app_pmadmin_cont
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8086:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - backend
+
+# Volumes to be created to persist data  
+volumes:
+  db_data:
+
+    # Networks to be created to facilitate communication between containers
+networks:
+  backend:
+  frontend:
+
+
