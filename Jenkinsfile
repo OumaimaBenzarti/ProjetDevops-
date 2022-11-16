@@ -38,6 +38,7 @@ pipeline {
                 steps{
                     sh 'docker-compose -d -f docker-compose.yml --build'
                     }
+            }
             stage('MVN SONARQUBE')
             {
                 steps{
@@ -50,7 +51,7 @@ pipeline {
                     }
 
                     }
-                    }
+                    
 
           }
 }
