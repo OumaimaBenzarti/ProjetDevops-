@@ -36,7 +36,7 @@ pipeline {
 
             stage("Docker Compose"){
                 steps{
-                    sh 'docker-compose -d -f docker-compose.yml --build'
+                    sh 'docker-compose --build up -d'
                     }
             }
             stage('MVN SONARQUBE')
