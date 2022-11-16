@@ -30,7 +30,7 @@ pipeline {
         }
             stage('Testing..') {
                 steps {
-                sh 'echo "test"'
+                sh 'cd ${springF} && mvn test'
             }
         }
             stage('MVN SONARQUBE')
@@ -40,18 +40,20 @@ pipeline {
                 }
             }
 
-            stage("Docker Compose"){
-                steps{
-                    sh 'sudo -s docker-compose up -d'
-                    }
-            }
+
 
             stage("Nexus deploy"){
                 steps{
                     sh 'cd ${springF} && mvn deploy'
                     }
 
+                }
+                 stage("Docker Compose"){
+                steps{
+                    sh 'sudo -s docker-compose up -d'
                     }
+            }
+
                     
 
           }
