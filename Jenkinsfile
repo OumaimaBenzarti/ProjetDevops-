@@ -2,8 +2,8 @@ pipeline {
 
     environment {
 
-     springF="app_back"   
-     angularF="app_front"    
+     springF="achat_back"   
+     angularF="achat_front"    
    }
 
           agent any
