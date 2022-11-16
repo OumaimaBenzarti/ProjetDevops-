@@ -36,7 +36,7 @@ pipeline {
 
             stage("Docker Compose"){
                 steps{
-                    sh 'sudo docker-compose up -d'
+                    sh 'sudo -s docker-compose up -d'
                     }
             }
             stage('MVN SONARQUBE')
