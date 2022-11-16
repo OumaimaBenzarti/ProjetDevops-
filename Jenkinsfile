@@ -33,6 +33,11 @@ pipeline {
                 sh 'echo "test"'
             }
         }
+
+            stage("Docker Compose"){
+                steps{
+                    sh 'docker-compose -d -f docker-compose.yml --build'
+                    }
             stage('MVN SONARQUBE')
             {
                 steps{
@@ -45,11 +50,6 @@ pipeline {
                     }
 
                     }
-            stage("Docker Compose"){
-                steps{
-                    sh 'docker-compose -d -f docker-compose.yml --build'
-                    }
-
                     }
 
           }
