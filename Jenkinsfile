@@ -30,7 +30,7 @@ pipeline {
         }
             stage('Testing..') {
                 steps {
-                sh 'cd ${springF} && mvn test'
+                sh 'echo "test"'
             }
         }
             stage('MVN SONARQUBE')
