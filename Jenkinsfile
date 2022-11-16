@@ -29,6 +29,11 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
                 }
             }
+             stage("Nexus deploy"){
+                 steps{
+                    sh 'mvn deploy'
+                    }
+                    }
 
           }
 }
