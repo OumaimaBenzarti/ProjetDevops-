@@ -33,18 +33,19 @@ pipeline {
                 sh 'echo "test"'
             }
         }
-
-            stage("Docker Compose"){
-                steps{
-                    sh 'sudo -s docker-compose up -d'
-                    }
-            }
             stage('MVN SONARQUBE')
             {
                 steps{
                 sh 'cd ${springF} && mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
                 }
             }
+
+            stage("Docker Compose"){
+                steps{
+                    sh 'sudo -s docker-compose up -d'
+                    }
+            }
+
             stage("Nexus deploy"){
                 steps{
                     sh 'cd ${springF} && mvn deploy'
