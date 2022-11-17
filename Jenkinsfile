@@ -52,7 +52,10 @@ pipeline {
                 }
             stage("preparation deploy"){
                 steps{
-                    sh 'cd ${angularF} && npm run build -- --outputPath=./dist/out '
+                    
+                    nodejs('Nodejs'){
+                        sh 'cd ${angularF} && npm run build -- --outputPath=./dist/out'
+                    }
  
                     }
 
