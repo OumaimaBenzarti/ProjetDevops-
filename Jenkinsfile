@@ -20,7 +20,7 @@ pipeline {
             stage('Cleaning..') {
 
                 steps {
-                sh ' cd ${springF} && mvn clean'
+                sh ' cd ${springF} && mvn clean install'
             }
         }
             stage('Compiling..') {
