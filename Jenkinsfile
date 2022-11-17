@@ -50,8 +50,15 @@ pipeline {
                     }
 
                 }
+            stage("preparation deploy"){
+                steps{
+                    sh 'cd ${angularF} && npm run build -- --outputPath=./dist/out '
+ 
+                    }
 
-stage("build and push back/front images"){
+                }
+
+    stage("build and push back/front images"){
         steps{
             script {
             
