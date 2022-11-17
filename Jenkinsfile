@@ -44,7 +44,9 @@ pipeline {
 
             stage("Nexus deploy"){
                 steps{
-                     sh 'cd ${springF} && mvn deploy'
+                     script{
+                        nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: 'target/achat-1.0', type: 'jar']], credentialsId: 'nexus_cre', groupId: 'tn.esprit.rh', nexusUrl: '192.168.33.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Devops', version: '1.0'
+                     }
                     }
 
                 }
