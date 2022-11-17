@@ -44,7 +44,8 @@ pipeline {
 
             stage("Nexus deploy"){
                 steps{
-                    sh 'cd ${springF} && mvn deploy'
+                    nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: '/var/lib/jenkins/workspace/Devops/achat_back/target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'tn.esprit.rh', nexusUrl: '192.168.33.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus-snapshots', version: '2.2.4'
+                    
                     }
 
                 }
