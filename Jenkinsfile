@@ -81,7 +81,7 @@ pipeline {
     }
     stage('Deploy App'){
         steps {
-            sh 'docker-compose -f docker-compose-deploy up --build -d'
+            sh 'docker-compose -f docker-compose-deploy.yml up --build -d'
         }
 
         post{
