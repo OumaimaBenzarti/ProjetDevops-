@@ -50,16 +50,7 @@ pipeline {
                     }
 
                 }
-            stage("preparation deploy"){
-                steps{
-                    
-                    nodejs('Nodejs'){
-                        sh 'cd ${angularF} && npm run build -- --outputPath=./dist/out'
-                    }
- 
-                    }
 
-                }
 
     stage("build and push back/front images"){
         steps{
@@ -69,10 +60,10 @@ pipeline {
     
          withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                             sh "docker build -t $USER/achat_back ${springF}/"
-                            sh "docker build -t $USER/achat_front ${angularF}/"
+                            //sh "docker build -t $USER/achat_front ${angularF}/"
                             sh "echo $PASS | docker login -u $USER --password-stdin"
                             sh "docker push $USER/achat_back"
-                            sh "docker push $USER/achat_front"
+                           // sh "docker push $USER/achat_front"
                         }
         }
         }
@@ -88,12 +79,22 @@ pipeline {
     
         }
     }
-                 stage("Docker Compose"){
-                steps{
-                    sh 'echo"test"'
-                    }
-            }
+    stage('Deploy App'){
+        steps {
+            sh 'docker-compose up --build -d'
+        }
 
+        post{
+        
+            success{
+                echo "====++++Success++++===="
+            }
+        
+            failure{
+                echo "====++++Failed++++===="
+            }
+    
+        }
                     
 
           }
