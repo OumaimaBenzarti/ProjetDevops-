@@ -3,7 +3,8 @@ pipeline {
     environment {
 
      springF="achat_back"   
-     angularF="achat_front"    
+     angularF="achat_front"   
+     DOCKERHUB_CREDENTIALS=credentials('dockerhub_id') 
    }
 
           agent any
@@ -61,7 +62,7 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                             sh "docker build -t $USER/achat_back ${springF}/"
                             //sh "docker build -t $USER/achat_front ${angularF}/"
-                            sh "echo $PASS | docker login -u $USER -password-stdin"
+                            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                             sh "docker push $USER/achat_back"
                            // sh "docker push $USER/achat_front"
                         }
