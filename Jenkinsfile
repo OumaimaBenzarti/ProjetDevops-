@@ -59,13 +59,12 @@ pipeline {
             
             echo "====++++executing build and push back + front images++++===="
     
-         withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                            sh "docker build -t $USER/achat_back ${springF}/"
+            withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                            sh "docker build -t $user/achat_back ${springF}/"
                             //sh "docker build -t $USER/achat_front ${angularF}/"
-                            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                            sh "docker push $USER/achat_back"
-                           // sh "docker push $USER/achat_front"
-                        }
+                            sh "echo $pass | docker login -u $user --password-stdin"
+                            sh "docker push $user/achat_back"
+}
         }
         }
         post{
