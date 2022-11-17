@@ -61,7 +61,7 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                             sh "docker build -t $USER/achat_back ${springF}/"
                             //sh "docker build -t $USER/achat_front ${angularF}/"
-                            sh "echo $PASS | docker login -u $USER --password-stdin"
+                            sh "echo $PASS | docker login -u $USER -password-stdin"
                             sh "docker push $USER/achat_back"
                            // sh "docker push $USER/achat_front"
                         }
